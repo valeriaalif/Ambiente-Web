@@ -14,11 +14,11 @@ function ConsultarUsuariosModel()
 
 }
 
-function BuscarUsuarioModel($correoElectronico)
+function BuscarUsuarioModel($correoelectronico)
 {
     $instancia = Open();
 
-    $sentencia = "CALL BuscarUsuario('$correoElectronico');";
+    $sentencia = "CALL BuscarUsuario('$correoelectronico');";
     $respuesta = $instancia->query($sentencia);
 
     Close($instancia);
@@ -27,5 +27,15 @@ function BuscarUsuarioModel($correoElectronico)
 
 }
 
-function RegistrarUsuarioModel($correoele)
+function RegistrarUsuarioModel($correoelectronico, $contrasenna)
+{
+    $instancia = Open();
+    
+    $sentencia = "CALL RegistrarUsuario('$correoElectronico','$contrasenna');";
+    $respuesta = $instancia -> query($sentencia);
+
+    Close($instancia);
+
+    return $respuesta;
+}
 ?>

@@ -49,4 +49,28 @@ if(isset($_POST["btnRegistrarse"])){
         header("Location: ../Views/login.php");
     }
 }
+
+function EnviarCorreo($destinatario, $asunto, $cuerpo)
+{
+    require '../PHPMailer/src/PHPMailer.php';
+    require '../PHPMailer/src/SMTP.php';
+
+    $mail = new PHPMailer();
+    $mail -> CharSet = 'UTF-8';
+
+    $mail -> IsSMTP();
+    $mail -> Host = 'smtp.office365.com'; // smtp.gmail.com     
+    $mail -> SMTPSecure = 'tls';
+    $mail -> Port = 587; // 465 // 25                               
+    $mail -> SMTPAuth = true;
+    $mail -> Username = '.....@hotmail.com';               
+    $mail -> Password = '.....';                                
+    
+    $mail -> SetFrom('.....@hotmail.com', "Sistema Profesores");
+    $mail -> Subject = $asunto;
+    $mail -> MsgHTML($cuerpo);   
+    $mail -> AddAddress($destinatario, 'Usuario Sistema');
+
+    $mail -> send();
+}
 ?>
