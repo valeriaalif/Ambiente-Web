@@ -54,6 +54,7 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo)
 {
     require '../PHPMailer/src/PHPMailer.php';
     require '../PHPMailer/src/SMTP.php';
+    require '../PHPMailer/PHPMailerAutoload.php';
 
     $mail = new PHPMailer();
     $mail -> CharSet = 'UTF-8';
@@ -63,13 +64,14 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo)
     $mail -> SMTPSecure = 'tls';
     $mail -> Port = 587; // 465 // 25                               
     $mail -> SMTPAuth = true;
-    $mail -> Username = '.....@hotmail.com';               
-    $mail -> Password = '.....';                                
+    $mail -> Username = 'valeriaalif@gmail.com';               
+    $mail -> Password = '....';                                
     
-    $mail -> SetFrom('.....@hotmail.com', "Sistema Profesores");
+    $mail -> SetFrom('valeriaalif@gmail.com', "Sistema Profesores");
     $mail -> Subject = $asunto;
     $mail -> MsgHTML($cuerpo);   
     $mail -> AddAddress($destinatario, 'Usuario Sistema');
+    $mail->AddAttachment("C:\Users\valer\Documents\Libros\C.R_Claude_Monet_Volume_I_Wildenstein_Institute.pdf");
 
     $mail -> send();
 }

@@ -1,5 +1,5 @@
 <?php
-include_once '../Controllers/loginController.php'
+include_once '../Controllers/usuariosController.php'
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@ include_once '../Controllers/loginController.php'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registrar Cuenta</title>
+  <title>Recuperar Cuenta</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -33,25 +33,11 @@ include_once '../Controllers/loginController.php'
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Contraseña" required id= "contrasenna" name= "contrasenna" >
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Confirmar Contraseña" required id= "confirmarcontrasena" name= "confirmarcontrasena" onclick="ValidarPswd();">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
+      
         <div class="row">
           <div class="col-12">
-            <input type="submit" class="btn btn-primary btn-block"  disabled id ="btnRegistrarse" name="btnRegistrarse" value= "Registrarse">
+            <input type="submit" class="btn btn-primary btn-block" 
+             id ="btnRecuperar" name="btnRecuperar" value= "Recuperar Usuario">
           </div>
         </div>
       </form>

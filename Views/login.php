@@ -51,7 +51,7 @@ include_once '../Controllers/loginController.php'
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="forgot-password.html">Olvidó Contraseña</a>
+        <a href="recuperarUsuario.php">Olvidó Contraseña</a>
       </p>
       <p class="mb-0">
         <a href="registrarUsuario.php" class="text-center">Crear Cuenta</a>
