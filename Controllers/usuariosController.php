@@ -78,7 +78,7 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo)
     $mail -> Port = 587; // 465 // 25                               
     $mail -> SMTPAuth = true;
     $mail -> Username = 'vali80232@ufide.ac.cr';               
-    $mail -> Password = 'C75X_AU06';                                
+    $mail -> Password = '...';                                
     
     $mail -> SetFrom('vali80232@ufide.ac.cr', "Sistema Profesores");
     $mail -> Subject = $asunto;
