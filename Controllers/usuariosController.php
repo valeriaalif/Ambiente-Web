@@ -49,12 +49,25 @@ if(isset($_POST["btnRegistrarse"])){
         header("Location: ../Views/login.php");
     }
 }
+if(isset($_POST["btnRecuperar"]))
+{
+    $correoElectronico = $_POST["correoelectronico"];
+    $respuesta = BuscarUsuarioModel($correoElectronico);
+
+    if($respuesta -> num_rows > 0)
+    {
+        $datosUsuario = mysqli_fetch_array($respuesta);
+        $cuerpo = "Su contraseña actual es: " . $datosUsuario["Contraseña"];
+
+        EnviarCorreo($correoElectronico, 'Recuperar Usuario', $cuerpo);
+        header("Location: ../Views/login.php");
+    }
+}
 
 function EnviarCorreo($destinatario, $asunto, $cuerpo)
 {
     require '../PHPMailer/src/PHPMailer.php';
     require '../PHPMailer/src/SMTP.php';
-    require '../PHPMailer/PHPMailerAutoload.php';
 
     $mail = new PHPMailer();
     $mail -> CharSet = 'UTF-8';
@@ -64,14 +77,14 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo)
     $mail -> SMTPSecure = 'tls';
     $mail -> Port = 587; // 465 // 25                               
     $mail -> SMTPAuth = true;
-    $mail -> Username = 'valeriaalif@gmail.com';               
-    $mail -> Password = '....';                                
+    $mail -> Username = 'vali80232@ufide.ac.cr';               
+    $mail -> Password = 'C75X_AU06';                                
     
-    $mail -> SetFrom('valeriaalif@gmail.com', "Sistema Profesores");
+    $mail -> SetFrom('vali80232@ufide.ac.cr', "Sistema Profesores");
     $mail -> Subject = $asunto;
     $mail -> MsgHTML($cuerpo);   
     $mail -> AddAddress($destinatario, 'Usuario Sistema');
-    $mail->AddAttachment("C:\Users\valer\Documents\Libros\C.R_Claude_Monet_Volume_I_Wildenstein_Institute.pdf");
+    $mail ->AddAttachment("C:\Users\valer\Documents\universidad5\Calidad Software\SC_405_Calidad del Software.pdf");
 
     $mail -> send();
 }

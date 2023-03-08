@@ -11,12 +11,13 @@ function ValidarCorreo(){
         },
         success: function (res){
          if(res == "OK"){
-            alert(res);
-            $('#btnIniciarSesion').prop("disabled",true);
+            alert("El correo ingresado no existe");
+            $("#btnRecuperar").prop("disabled",true);
          }
             else{
-                $('#btnIniciarSesion').prop("disabled",false);
+                $("#btnRecuperar").prop("disabled",false);
             }
          }
         });
 }
+

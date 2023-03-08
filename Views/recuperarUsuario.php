@@ -13,6 +13,7 @@ include_once '../Controllers/usuariosController.php'
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/recuperar.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -23,7 +24,7 @@ include_once '../Controllers/usuariosController.php'
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Recuperar Cuenta</p>
-      <form action="" method="post">
+      <form action="" method="post" enctype="multipart/formdata">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Correo Electronico"  value = "" required 
           id="correoelectronico" name= "correoelectronico" onblur="ValidarCorreo();">
@@ -33,11 +34,14 @@ include_once '../Controllers/usuariosController.php'
             </div>
           </div>
         </div>
-      
+<div class = inputfile>
+  <input type="file" id="docpicker" name = "filePicker"
+  accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required/>
+</div>
         <div class="row">
           <div class="col-12">
             <input type="submit" class="btn btn-primary btn-block" 
-             id ="btnRecuperar" name="btnRecuperar" value= "Recuperar Usuario">
+             id ="btnRecuperar" name="btnRecuperar"  value= "Recuperar Usuario" onclick="Notificar()">
           </div>
         </div>
       </form>
