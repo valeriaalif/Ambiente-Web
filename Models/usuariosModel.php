@@ -5,7 +5,10 @@ function ConsultarUsuariosModel()
 {
     $instancia = Open();
 
-    $sentencia = "CALL ConsultarUsuarios();";
+    $usuario = $_SESSION["CorreoElectronico"];
+    $tipoUsuario = $_SESSION["TipoUsuario"];
+
+    $sentencia = "CALL ConsultarUsuarios('$usuario', $tipoUsuario);";
     $respuesta = $instancia->query($sentencia);
 
     Close($instancia);

@@ -28,6 +28,7 @@
             <th>Correo Electronico</th>
                 <th>Estado </th>
                 <th>Tipo Usuario </th>
+                <th>Acciones </th>
             </tr>
 </thead>
 <tbody>

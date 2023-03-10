@@ -16,10 +16,12 @@ $res = IniciarSesionModel($correoelectronico,$contrasenna);
 
 
 if($res -> num_rows > 0){
-
-     $datosUsuario = mysqli_fetch_array($res); //no sea abstracto, lo encapsula en un array con los datos en distintas posiciones.
+    
+$datosUsuario = mysqli_fetch_array($res); //no sea abstracto, lo encapsula en un array con los datos en distintas posiciones.
 $_SESSION["ConsecutivoUsuario"] =  $datosUsuario["ConsecutivoUsuario"];
 $_SESSION["CorreoElectronico"] =  $datosUsuario["CorreoElectronico"];
+$_SESSION["TipoUsuario"] =  $datosUsuario["TipoUsuario"];
+$_SESSION["PerfilUsuario"] = $datosUsuario["PerfilUsuario"];
 
     header("Location: ../Views/principal.php");
 }

@@ -14,6 +14,13 @@ if($respuesta -> num_rows > 0){
         echo "<td>". $fila["CorreoElectronico"] . "</td>";
         echo "<td>". $fila["DescEstado"] . "</td>";
         echo "<td>". $fila["NombreTipoUsuario"] . "</td>";
+
+        if($_SESSION["TipoUsuario"]==1){
+        echo "<td><a href ='../Views/actualizarUsuario.php'>Actualizar</a> | <a href=''>Eliminar</a></td>";}
+        else
+        {
+            echo "<td><a href='../Views/actualizarUsuario.php'>Actualizar</a></td>";
+        }
         echo "</tr>";
     }
 
