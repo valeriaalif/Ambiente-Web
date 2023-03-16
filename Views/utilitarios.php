@@ -80,8 +80,8 @@ echo '
           
           <li class="nav-item">
             <a href="../widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-info"></i>
-              <p>Consultas</p>
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>Carrito</p>
             </a>
           </li>     
         </ul>

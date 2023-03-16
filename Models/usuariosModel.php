@@ -17,6 +17,34 @@ function ConsultarUsuariosModel()
 
 }
 
+function ConsultarTiposUsuariosModel()
+{
+    $instancia = Open();
+
+
+    $sentencia = "CALL ConsultarTiposUsuarios();";
+    $respuesta = $instancia->query($sentencia);
+
+    Close($instancia);
+
+    return $respuesta;
+
+}
+
+
+function ConsultarUsuarioModel($consecutivo)
+{
+    $instancia = Open();
+
+
+    $sentencia = "CALL ConsultarUsuario($consecutivo);";
+    $respuesta = $instancia->query($sentencia);
+
+    Close($instancia);
+
+    return $respuesta;
+
+}
 function BuscarUsuarioModel($correoElectronico)
 {
     $instancia = Open();

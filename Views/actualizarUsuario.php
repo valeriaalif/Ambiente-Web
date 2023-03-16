@@ -1,6 +1,7 @@
 <?php
     include_once 'utilitarios.php';
     include_once '../Controllers/usuariosController.php';
+    $datos = ConsultarUsuario($_GET["q"]);
     MostrarHeader();
     MostrarMenu();
   ?>
@@ -20,81 +21,92 @@
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 
-<div class="content-wrapper">
-    <section class="content-header">
-        <div class="container-fluid">
+<body class="hold-transition sidebar-mini">
+
+    <div class="wrapper">
+
+        <?php
+    MostrarMenu();
+  ?>
+
+        <div class="content-wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
 
 
 
-            <div class="card">
-                <div class="card-body login-card-body">
-                    <p class="login-box-msg">Actualizar Información</p>
-            
+                    <div class="card">
+                        <div class="card-body login-card-body">
+                            <h4 class="login-box-msg">Actualizar Información</h4>
+
+                            <form action="" method="post">
 
 
-                    <form action="" method="post">
-                    <div class = "row">
-                        <div class = "col-6">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control" placeholder="Correo Electronico" value="" required
-                                id="correoelectronico" name="correoelectronico" onblur="ValidarCorreo();">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="email" class="form-control" placeholder="Correo Electrónico"
+                                            required id="correoElectronico" name="correoElectronico"
+                                            readOnly="true" value=<?php echo $datos["CorreoElectronico"] ?>>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="password" class="form-control" placeholder="Contraseña" required
+                                            id="contrasenna" name="contrasenna">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
-                        <div class = "row">
-                            <div class="col-6">
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Contraseña" required
-                                id="contrasenna" name="contrasenna">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        </div>
 
-                  
-                            <div class ="col-4">
-                            <div class="input-group mb-3">
-                            <input type="password" class="form-control" placeholder="Identificacion" required
-                                id="Identificacion" name="Identificacion">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-user"></span>
-                                </div>
-                            </div>
-                       
-                        <div class="row">
-                            <div class="col-12">
-                                <input type="submit" class="btn btn-primary btn-block" disabled id="btnRegistrarse"
-                                    name="btnRegistrarse" value="Registrarse">
-                            </div>
-                        </div>
-                    
-                       </form>
+                                <br>
 
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" placeholder="Identificación"
+                                            required id="Identificacion" name="Identificacion" onkeyUp ="BuscarNombreApi();">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="text" class="form-control" placeholder="Nombre" required
+                                            id="Nombre" name="Nombre" readOnly="true">
+                                    </div>
+                                    <div class="col-4">
+                                        <select class="form-control" placeholder="Perfil" required id="Perfil"
+                                            name="Perfil">
+                                            <?php
+                                                ConsultarTiposUsuarios();
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-12">
+                                        <input type="submit" class="btn btn-primary btn-block" value="Registrarse"
+                                            id="btnRegistrarse" name="btnRegistrarse" disabled>
+                                    </div> -->
+
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
                 </div>
-    </section>
-</div>
 
 
-<?php
+
+
+
+        </div>
+        </section>
+    </div>
+
+    <?php
     MostrarFooter();
   ?>
 
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="dist/js/adminlte.min.js"></script>
-<script src="javascripts/funcionesLogin.js"></script>
+    </div>
 
-</script>
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/adminlte.min.js"></script>
+    <script src="javascripts/funcionesActualizarUsuario.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-include_once '../Controllers/loginController.php'
+include_once '../Controllers/usuariosController.php'
 ?>
 
 <!DOCTYPE html>
@@ -7,12 +7,13 @@ include_once '../Controllers/loginController.php'
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistema</title>
+  <title>Recuperar Cuenta</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/recuperar.css">
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -22,27 +23,25 @@ include_once '../Controllers/loginController.php'
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Inicia Sesion</p>
-      <form action="" method="post">
+      <p class="login-box-msg">Notificar Usuario</p>
+      <form action="" method="post" enctype="multipart/formdata">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Correo Electronico"  value = ""required id="correoelectronico" name= "correoelectronico" onkeyup="HabilitarCampos();">
+          <input type="email" class="form-control" placeholder="Correo Electronico"  value = "" required 
+          id="correoelectronico" name= "correoelectronico" onblur="ValidarCorreo();">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Contraseña" required id= "contraseña" name= "contraseña" onkeyup="HabilitarCampos();">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
+<div class = inputfile>
+  <input type="file" id="docpicker" name = "filePicker"
+  accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required/>
+</div>
         <div class="row">
           <div class="col-12">
-            <input type="submit" class="btn btn-primary btn-block"  disabled id ="btnIniciarSesion" name="btnIniciarSesion" value= "Iniciar Sesion">
+            <input type="submit" class="btn btn-primary btn-block" 
+             id ="btnNotificar" name="btnNotificar"  value= "Recuperar Usuario" onclick="Notificar()">
           </div>
         </div>
       </form>
@@ -50,17 +49,7 @@ include_once '../Controllers/loginController.php'
       
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
-        <a href="recuperarUsuario.php">Olvidó Contraseña</a>
-      </p>
-      <p class="mb-0">
-        <a href="registrarUsuario.php" class="text-center">Crear Cuenta</a>
-      </p>
-    </div>
-    <p class="mb-0">
-        <a href="registrarUsuario.php" class="text-center">Notificar</a>
-      </p>
-    </div>
+    
     <!-- /.login-card-body -->
   </div>
 </div>
@@ -69,7 +58,6 @@ include_once '../Controllers/loginController.php'
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>
-<script src="javascripts/funcionesLogin.js"></script>
 
 
 </script>
