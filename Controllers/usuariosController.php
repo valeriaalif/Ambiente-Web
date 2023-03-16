@@ -45,6 +45,7 @@ function ConsultarUsuario($consecutivo)
     $respuesta = ConsultarUsuarioModel($consecutivo);
     return mysqli_fetch_array($respuesta);
   
+
 }
 if(isset($_POST["BuscarUsuario"])){
     
@@ -71,6 +72,32 @@ if(isset($_POST["btnRegistrarse"])){
     }
 }
 
+if(isset($_POST["btnRecuperar"]))
+{
+    $correoElectronico = $_POST["correoElectronico"];
+    $respuesta = BuscarUsuarioModel($correoElectronico);
+
+    if($respuesta -> num_rows > 0)
+    {
+        $datosUsuario = mysqli_fetch_array($respuesta);
+        $cuerpo = "Su contraseña actual es: " . $datosUsuario["Contrasenna"];
+
+        EnviarCorreo($correoElectronico, 'Recuperar Usuario', $cuerpo, null);
+        header("Location: ../Views/login.php");
+    }
+}
+
+if(isset($_POST["btnNotificar"]))
+{
+    $correoElectronico = $_POST["correoElectronico"];
+    $nombreAdjunto = "../Files/" . $_FILES["adjunto"]["name"];
+    move_uploaded_file($_FILES["adjunto"]["tmp_name"], $nombreAdjunto);
+
+    EnviarCorreo($correoElectronico, 'Practica 2', 'Por favor revise el archivo adjunto', $nombreAdjunto);
+    unlink($nombreAdjunto);
+}
+
+
 function EnviarCorreo($destinatario, $asunto, $cuerpo, $nombreAdjunto)
 {
     require '../PHPMailer/src/PHPMailer.php';
@@ -92,10 +119,10 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo, $nombreAdjunto)
     $mail -> Subject = $asunto;
     $mail -> MsgHTML($cuerpo);   
     $mail -> AddAddress($destinatario, 'Usuario Sistema');
-    
-
-    $mail ->AddAttachment("C:\Users\valer\Documents\universidad5\Calidad Software\SC_405_Calidad del Software.pdf");
-
+    if($nombreAdjunto != null)
+    {
+        $mail -> AddAttachment($nombreAdjunto);
+    }
     $mail -> send();
 }
 
