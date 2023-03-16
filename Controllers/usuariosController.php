@@ -70,25 +70,12 @@ if(isset($_POST["btnRegistrarse"])){
         header("Location: ../Views/login.php");
     }
 }
-if(isset($_POST["btnRecuperar"]))
-{
-    $correoElectronico = $_POST["correoelectronico"];
-    $respuesta = BuscarUsuarioModel($correoElectronico);
-
-    if($respuesta -> num_rows > 0)
-    {
-        $datosUsuario = mysqli_fetch_array($respuesta);
-        $cuerpo = "Su contraseña actual es: " . $datosUsuario["Contraseña"];
-
-        EnviarCorreo($correoElectronico, 'Recuperar Usuario', $cuerpo);
-        header("Location: ../Views/login.php");
-    }
-}
 
 function EnviarCorreo($destinatario, $asunto, $cuerpo, $nombreAdjunto)
 {
     require '../PHPMailer/src/PHPMailer.php';
     require '../PHPMailer/src/SMTP.php';
+    require '../PHPMailer/PHPMailerAutoload.php';
 
     $mail = new PHPMailer();
     $mail -> CharSet = 'UTF-8';
@@ -101,7 +88,7 @@ function EnviarCorreo($destinatario, $asunto, $cuerpo, $nombreAdjunto)
     $mail -> Username = 'vali80232@ufide.ac.cr';               
     $mail -> Password = '...';                                
     
-    $mail -> SetFrom('vali80232@ufide.ac.cr', "Sistema Profesores");
+    $mail -> SetFrom('valeriaalif@gmail.com', "Sistema Profesores");
     $mail -> Subject = $asunto;
     $mail -> MsgHTML($cuerpo);   
     $mail -> AddAddress($destinatario, 'Usuario Sistema');

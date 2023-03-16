@@ -49,7 +49,7 @@ function BuscarUsuarioModel($correoElectronico)
 {
     $instancia = Open();
 
-    $sentencia = "CALL BuscarUsuario('$correoElectronico');";
+    $sentencia = "CALL BuscarUsuario('$correoelectronico');";
     $respuesta = $instancia->query($sentencia);
 
     Close($instancia);
@@ -58,7 +58,7 @@ function BuscarUsuarioModel($correoElectronico)
 
 }
 
-function RegistrarUsuarioModel($correoElectronico, $contrasenna)
+function RegistrarUsuarioModel($correoelectronico, $contrasenna)
 {
     $instancia = Open();
     
